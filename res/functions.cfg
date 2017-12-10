@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #
-# EZ AOSP (V2.0)
+# EZ AOSP
 #
-# Copyright (C) 2017 Michael S Corigliano (Mike Criggs) (michael.s.corigliano@gmail.com)
+# Written by Michael S Corigliano (Mike Criggs) (michael.s.corigliano@gmail.com)
 #
 # You can contribute to or fork this program here: https://github.com/mikecriggs/ez-aosp
 #

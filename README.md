@@ -10,7 +10,7 @@
 ### How to use it ###
 ```bash
   cd ez-aosp
-  ./noob-script.sh
+  ./ez-aosp.sh
 ```
 ### For a quicker environment setup: ###
 ```bash
