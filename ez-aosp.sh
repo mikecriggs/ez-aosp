@@ -21,30 +21,44 @@
 # Import functions
   . $PWD/res/functions.cfg
 
+# Install whiptail
+  TXT="We need to install the package 'whiptail' in order to use the program. To cancel installation, press CTRL+C within the next 10 seconds."
+  echoFun
+  sleep 10
+  
+  clear
+  TXT="Installing whiptail..."
+  echoFun
+  
+  clear
+  PKGS="whiptail"
+  installFun
+  clear
+
 # Title, authorship, social media
   whiptail --title "EZ AOSP" --msgbox "Written by Michael S Corigliano (Mike Criggs) \n\nEmail: michael.s.corigliano@gmail.com \nGitHub: github.com/mikecriggs\nGoogle+: google.com/+MichaelCorigliano \nTwitter: twitter.com/MikeCriggs" 15 70
 
 # EZ AOSP description
-  whiptail --title "EZ AOSP" --msgbox "This tool is meant to help set up an AOSP (Android Open Source Project) build environment as painlessly and user-friendly as possible. By doing this, contributions to AOSP and AOSP forks will be much easier. It is recommended that you use Ubuntu 16.04 LTS or higher. \n\nContributions to this program can be made here: github.com/mikecriggs/ez-aosp" 20 70
+  whiptail --title "EZ AOSP" --msgbox "This tool is meant to help set up an AOSP (Android Open Source Project) build environment as painlessly and user-friendly as possible. By doing this, contributions to AOSP and custom aftermarket AOSP firmware, also known as 'custom ROMs' will be much easier to make. Please be aware that this program currently only supports Ubuntu 16.04 LTS. Other Ubuntu versions and Linux distributions will be added in the future. \n\nContributions to this program can be made here: github.com/mikecriggs/ez-aosp" 20 70
 
 # Continue?
   if (whiptail --title "EZ AOSP" --yesno "Would you like to start setting up the build environment?" 10 70)
   then
-    ECHOTXT="Continuing with setup..."
+    TXT="Continuing with setup..."
     echoFun
-    sleep 2
+    sleep 3
   else
-    ECHOTXT="Exiting EZ AOSP..."
+    TXT="Exiting EZ AOSP..."
     echoFun
-    sleep 2
+    sleep 5
     clear
     exit
   fi
 
 # Starting build environment setup
-  ECHOTXT="Setting up build environment..."
+  TXT="Setting up build environment..."
   echoFun
-  sleep 2
+  sleep 3
 
 # Update Ubuntu OS
   if (whiptail --yesno --title "EZ AOSP" "Would you like to update Ubuntu? If not, you can update this later with 'extras/update-ubuntu.sh'" 10 70)
@@ -52,14 +66,15 @@
     updateUbuntu
     clear
   else
-    ECHOTXT="Not updating Ubuntu...'"
+    TXT="Not updating Ubuntu...'"
     echoFun
-    sleep 2
+    sleep 3
     clear
   fi
 
 # Install packages
   pkgsFun
+  clear
 
 # Install and configure JDK (OpenJDK 8)
   jdkFun
@@ -71,6 +86,7 @@
 
 # Configure GIT
   gitSetup
+  clear
 
 # Your build environment is ready to use!
   whiptail --title "EZ AOSP" --msgbox "Your build environment is ready to use! Refer to your ROM's README to get started syncing and compiling your source." 20 70

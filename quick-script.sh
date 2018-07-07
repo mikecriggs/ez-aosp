@@ -24,75 +24,78 @@
 
 # Update Ubuntu
   echo -e ${BLDRED}"Updating Ubuntu..."${RST}
-  echo -e ""
-  echo -e ""
-  sleep 2
+  sleep 3
+  clear
+  
   sudo apt update -y
   sudo apt upgrade -y
-  echo -e ""
-  echo -e ""
+  clear
+  
   echo -e ${BLDRED}"Ubuntu updated."${RST}
-  sleep 2
+  sleep 3
   clear
 
 # Install packages
   echo -e ${BLDRED}"Installing packages..."${RST}
-  echo -e ""
-  echo -e ""
-  sleep 2
+  sleep 3
+  clear
+  
   sudo apt install git-core python gnupg flex bison gperf libsdl1.2-dev libesd0-dev \
   squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev openjdk-8-jre openjdk-8-jdk pngcrush \
   schedtool libxml2 libxml2-utils xsltproc lzop libc6-dev schedtool g++-multilib lib32z1-dev lib32ncurses5-dev \
   gcc-multilib liblz4-* pngquant ncurses-dev texinfo gcc gperf patch libtool \
   automake g++ gawk subversion expat libexpat1-dev python-all-dev bc libcloog-isl-dev \
   libcap-dev autoconf libgmp-dev build-essential gcc-multilib g++-multilib pkg-config libmpc-dev libmpfr-dev lzma* \
-  liblzma* w3m android-tools-adb maven ncftp htop -y
-  echo -e ""
-  echo -e ""
+  liblzma* w3m android-tools-adb maven ncftp htop chrpath whiptail diffstat cpio libssl-dev -y
+  clear
+  
   echo -e ${BLDRED}"Packages installed."${RST}
-  sleep 2
+  sleep 3
   clear
 
-# Install JDK
-  echo -e ${BLDRED}"Installing JDK 8..."${RST}
-  echo -e ""
-  echo -e ""
-  sleep 2
-  sudo apt install openjdk-8-jdk -y
-  sudo apt -f install -y
-  sudo apt update -y
-  echo -e ""
-  echo -e ""
-  echo -e ${BLDRED}"JDK installed."${RST}
-  sleep 2
-  clear
+# Install and configure JDK
+  # Install JDK
+    echo -e ${BLDRED}"Installing JDK 8..."${RST}
+    sleep 3
+    clear
+    
+    sudo apt install openjdk-8-jdk -y
+    clear
+    sudo apt -f install -y
+    clear
+    sudo apt update -y
+    clear
 
-# Configure JDK
-  echo -e ${BLDRED}"Configuring JDK 8..."${RST}
-  echo -e ""
-  echo -e ""
-  sleep 2
-  sudo update-alternatives --config java
-  sudo update-alternatives --config javac
-  echo -e ""
-  echo -e ""
-  echo -e ${BLDRED}"JDK installed."${RST}
-  sleep 2
-  clear
+    echo -e ${BLDRED}"JDK installed."${RST}
+    sleep 2
+    clear
+
+  # Configure JDK
+    echo -e ${BLDRED}"Updating java alternative. If asked, please select the option best matching 'openjdk-8'. Do not use Oracle's JDK or any other version of OpenJDK except for 8."${RST}
+    sleep 5
+    clear
+    
+    sudo update-alternatives --config java
+    sudo update-alternatives --config javac
+    clear
+    
+    echo -e ${BLDRED}"JDK configured."${RST}
+    sleep 3
+    clear
 
 # Setup repo
   echo -e ${BLDRED}"Setting up repo tool..."${RST}
-  echo -e ""
-  echo -e ""
-  sleep 2
+  sleep 3
+  clear
+  
   mkdir -p ~/bin
   PATH=~/bin:$PATH
   curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   sudo chmod a+x ~/bin/repo
-  echo -e ""
-  echo -e ""
+  clear
+  
   echo -e ${BLDRED}"Repo tool setup."${RST}
-  sleep 2
+  sleep 3
   clear
 
 # Setup GIT
@@ -111,7 +114,7 @@
   exitstatus=$?
   if [ $exitstatus = 0 ]; then
     echo -e ${BLDRED}"Your GIT email will be set as '$EMAIL'"${RST}
-    git config --global user.name "$EMAIL"
+    git config --global user.email "$EMAIL"
     sleep 2
   fi
   clear

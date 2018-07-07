@@ -1,25 +1,30 @@
 #!/bin/bash
 
 #
-# EZ AOSP
+# EZ AOSP: extra scripts
 #
 # Written by Michael S Corigliano (Mike Criggs) (michael.s.corigliano@gmail.com)
 #
 # You can contribute to or fork this program here: https://github.com/mikecriggs/ez-aosp
 #
-#
-# This software is licensed under the terms of the GNU General Public
-# License version 2, as published by the Free Software Foundation, and
-# may be copied, distributed, and modified under those terms.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-
-# Imports
-  . $PWD/../res/functions.cfg
 
 # Configure GIT
-  gitSetupFun
+  whiptail --title "EZ AOSP" --msgbox "We will now configure GIT" 15 70
+
+  USERNAME=$(whiptail --inputbox --title "EZ AOSP" "What is your name?" 10 70 3>&1 1>&2 2>&3)
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
+    echo -e ${BLDRED}"Your GIT username will be set as '$USERNAME'"${RST}
+    git config --global user.name "$USERNAME"
+    sleep 2
+  fi
+  clear
+
+  EMAIL=$(whiptail --inputbox  --title "EZ AOSP" "What is your email?" 10 70 3>&1 1>&2 2>&3)
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
+    echo -e ${BLDRED}"Your GIT email will be set as '$EMAIL'"${RST}
+    git config --global user.name "$EMAIL"
+    sleep 2
+  fi
+  clear
