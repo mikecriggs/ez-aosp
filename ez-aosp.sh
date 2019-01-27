@@ -3,7 +3,7 @@
 #
 # EZ AOSP
 #
-# Written by Michael S Corigliano (Mike Criggs) (michael.s.corigliano@gmail.com)
+# Written by Michael S Corigliano (@MikeCriggs on GitHub.com) (michael.s.corigliano@gmail.com)
 #
 # You can contribute to or fork this program here: https://github.com/mikecriggs/ez-aosp
 #
@@ -25,11 +25,11 @@
   TXT="We need to install the package 'whiptail' in order to use the program. To cancel installation, press CTRL+C within the next 10 seconds."
   echoFun
   sleep 10
-  
+
   clear
   TXT="Installing whiptail..."
   echoFun
-  
+
   clear
   PKGS="whiptail"
   installFun
@@ -61,7 +61,7 @@
   sleep 3
 
 # Update Ubuntu OS
-  if (whiptail --yesno --title "EZ AOSP" "Would you like to update Ubuntu? If not, you can update this later with 'extras/update-ubuntu.sh'" 10 70)
+  if (whiptail --yesno --title "EZ AOSP" "Would you like to update Ubuntu? If not, you can update this later with 'res/extras/update-ubuntu.sh'" 10 70)
   then
     updateUbuntu
     clear
@@ -85,7 +85,7 @@
   clear
 
 # Configure GIT
-  gitSetup
+  gitSetupWhiptail
   clear
 
 # Your build environment is ready to use!
